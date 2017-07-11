@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="assets/images/drawing.png">
+        <title>Matematica</title>
+
+        <!-- material icons -->
+        <link type="text/css" rel="stylesheet" href="assets/css/material_icon.css" />
+        <!-- Bootstrap -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="assets/js/jquery-2.2.0.min.js"></script>
+        <script src="assets/js/jquery-ui.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="assets/js/bootstrap.min.js"></script>
+
+        <!-- import components-->
+        <link type="text/css" rel="stylesheet" href="assets/css/component/elements.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/component/index.css" />
+
+    </head>
+    <body>
+        <div class="bodygra">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <br><br>
+                        <h1 class="text-center header-text">Ingrese los datos <br>del grafo</h1>
+                    </div>
+                </div>
+                <br><br><br><br><br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!--<input type="text" id="value"  class="input-body" placeholder="" id="stringGraph" value="{1, 2, 3, 4, 555, 651}, {1 -> 2, 1 -> 3, 1 -> 4, 4 -> 555, 4 ->651}">-->
+                        <input type="text" id="value"  class="input-body" placeholder="" id="stringGraph" >
+                        <button type="button" name="button" class="btn generate-btn" onclick="send()">
+                            <i class="material-icons">done</i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" name="button" class="tutorialBtn" data-toggle="modal" data-target="#tutorial" >Ver tutorial</button>
+                    </div>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+                <br><br><br><br><br>
+                <div class="row">
+                    <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-4">
+                        <h3 style="color: white">Integrantes</h3>
+                        <ul class="TwoCol">
+                            <li>a6</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade in" id="tutorial" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <center><h3 class="title-tut">Tutorial</h3></center>
+                    </div>
+            		<div id="myCarousel" class="carousel slide" data-interval="false" data-ride="carousel" style="background-color:powderblue;">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators" style="display:none;">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                            <li data-target="#myCarousel" data-slide-to="3"></li>
+                            <li data-target="#myCarousel" data-slide-to="4"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" >
+                            <div class="item active" >
+                                <img src="assets/images/tutorial-graph.png" height="auto" width="100%">
+                                <br>
+                                <p class="center-text">Bienvenido al tutorial de la aplicación para generararboles.</p>
+                                <p class="center-text">A continuación se muestra paso a paso como construir un arbol.</p> <br>
+                            </div>
+
+                            <div class="item">
+                                <img src="assets/images/graph-input.gif" height="auto" width="100%"><br>
+                                <p class="center-text">Para generar los nodos que conformaran al árbol se<br> debe utilizar la siguiente sintaxis en el campo de texto:</p>
+                                <p class="center-text"><strong> {"Nodo_1", "Nodo_2", ..., "Nodo_n"} </strong> </p>
+                                <p class="exmple-text"><strong>Ejemplos:</strong> <br> <br>- {8, 6, 3, 2, 5} <br>- {11, 22, 33, 44} <br>- {2, 4, 6, 8, 10, 12, 14}</p> <br>
+                                <p class="center-text"><strong>Nota:</strong>Los digitos utilizados solo pueden ser caracteres númericos y estos no deben repetirse.</p><br>
+                            </div>
+
+                            <div class="item">
+                                <img src="assets/images/graph-order.gif" height="auto" width="100%"><br>
+                                <p class="center-text">Para generar la estructura del árbol se debe establecer la <br>relación <strong>Padre-Hijo</strong> entre los nodos utilizando la siguiente sintaxis:</p>
+                                <p class="center-text">{"Nodo_1", "Nodo_2", ..., Nodo_n}, {"<strong>Nodo Padre</strong>" -> "<strong>Nodo Hijo</strong>", ...} </p><br>
+                                <p class="example-text"><strong>Ejemplos:<br></strong><br>- {1 -> 2} ("1" es padre de "2").<br>- {1 -> 3} ("1" es padre de "3").<br>- {2 -> 4} ("2" es padre de "4").</p><br>
+                                <p class="center-text"><strong>Nota:</strong> Todos los nodos deben poseer una relación, de lo contrario dicho nodo que no posea relación quedara huerfáno y por lo tanto excluido del árbol.</p>.
+                            </div>
+
+                            <div class="item">
+                                <img src="assets/images/graph-generated.gif" height="auto" width="100%"><br><br>
+                                <p class="center-text">Al haber ingresado los nodos del árbol y la relación entre ellos se <br>presiona el botón del lado derecho para generar el árbol.</p><br><br>
+                            </div>
+
+                            <div class="item">
+                                <img src="assets/images/pre-order.png" height="auto" width="100%"><br><br>
+                                <p class="center-text">El recorrido <strong>"Pre-Orden"</strong> del árbol generado se observa el campo <br>ubicado en la parte inferior del árbol.</p><br><br>
+                            </div>
+
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <img src="assets/images/chevron-sign-left.png" style="position: absolute; margin: auto; top: 0; left: 0; right: 0; bottom: 0;">
+                            <span class="glyphicon"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <img src="assets/images/chevron-sign-right.png" style="position: absolute; margin: auto; top: 0; left: 0; right: 0; bottom: 0;">
+                            <span class="glyphicon"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function send(){
+                localStorage["val"] = $("#value").val();
+                $("html").fadeOut(function(){
+                    document.location.href = "proces.html";
+                });
+            }
+        </script>
+    </body>
+</html>

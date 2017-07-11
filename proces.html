@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="assets/images/drawing.png">
+        <title>Matematica</title>
+        <!-- material icons -->
+        <link type="text/css" rel="stylesheet" href="assets/css/material_icon.css" />
+        <!-- Bootstrap -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="assets/js/jquery-2.2.0.min.js"></script>
+        <script src="assets/js/jquery-ui.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="assets/js/bootstrap.min.js"></script>
+
+        <!-- cytoscape -->
+        <script src="assets/js/cytoscape.min.js"></script>
+        <script src="assets/js/dagre.min.js"></script>
+        <script src="assets/js/cytoscape-dagre.js"></script>
+
+        <!-- Main Function -->
+        <script src="assets/js/matchString.js"></script>
+        <script src="assets/js/graphMain.js"></script>
+
+        <!-- JS library -->
+        <script src="assets/js/TreeModel.js" charset="utf-8"></script>
+        <script src="assets/js/traverseTheTree.js" charset="utf-8"></script>
+
+        <!-- import components-->
+        <link type="text/css" rel="stylesheet" href="assets/css/component/elements.css" />
+
+    </head>
+    <body>
+        <div class="jumbotron">
+            <button type="button" name="button" class="btn btn-back" onclick="back()"><i class="material-icons">arrow_back</i></button>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" name=""  class="input-body" placeholder="" id="stringGraph" >
+                        <button type="button" name="button" class="btn generate-btn" onclick="matchString()">
+                            <i class="material-icons">done</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- body -->
+        <div class="container">
+            <!-- canvas -->
+            <div class="row">
+                <div class=" col-sm-12">
+                    <div class="canvas" id="canvas">
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- preorden Output -->
+            <br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="alert alert-info" role="alert"><p id="salidaPreOrden">Pre-orden:</p></div>
+                </div>
+            </div>
+
+            <!-- button -->
+            <br>
+            <div class="row">
+                <div class="col-sm-10">
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" name="button" class="btn btn-del" onclick="destroy()"><i class="material-icons">delete_forever</i></button>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+
+    <script type="text/javascript">
+        $(function(){
+            var val = localStorage["val"];
+            $("#stringGraph").val(val);
+            matchString();
+        });
+
+        function back(){
+            $("html").fadeOut(function(){
+                document.location.href = "index.html";
+            });
+        }
+
+        function destroy(){
+            var cy = cytoscape({
+                container: $('#canvas')
+            });
+            cy.destroy();
+        }
+    </script>
+
+
+
+
+
+    </body>
+</html>
